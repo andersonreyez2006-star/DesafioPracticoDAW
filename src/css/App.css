@@ -1,34 +1,155 @@
 /* Hoja global que importa src/main.jsx. Define la apariencia, no el contenido del render. */
 * { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, sans-serif; background: #f4f6fa; color: #1c2430; }
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f4f6fa;
+  color: #1c2430;
+}
 /* Contenedor general y encabezado de App.jsx. */
-.app { max-width: 1200px; margin: 0 auto; padding: 1rem; }
-header { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
-.search { padding: .6rem 1rem; border: 1px solid #c8d0dc; border-radius: 8px; min-width: 240px; font-size: 1rem; }
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.search {
+  min-width: 240px;
+  padding: .6rem 1rem;
+  border: 1px solid #c8d0dc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
 /* Disposición del contenido y panel opcional de detalle. */
-main { display: block; margin-top: 1rem; }
-main.with-detail { display: grid; grid-template-columns: 1fr 360px; gap: 1rem; align-items: start; }
+main {
+  display: block;
+  margin-top: 1rem;
+}
+main.with-detail {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 1rem;
+  align-items: start;
+}
 /* Cuadrícula de CountryList y estilo de cada CountryCard. */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .8rem; }
-.card { background: #fff; border: 2px solid transparent; border-radius: 10px; padding: .6rem; cursor: pointer;
-  display: flex; flex-direction: column; align-items: center; gap: .5rem; font-size: .95rem; }
-.card:hover { box-shadow: 0 2px 10px #0002; }
-.card--selected { border-color: #2f6fed; }
-.card img { width: 100%; height: 90px; object-fit: cover; border-radius: 6px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: .8rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: #fff;
+  font-size: .95rem;
+  cursor: pointer;
+}
+.card:hover {
+  box-shadow: 0 2px 10px #0002;
+}
+.card--selected {
+  border-color: #2f6fed;
+}
+.card img {
+  width: 100%;
+  height: 90px;
+  border-radius: 6px;
+  object-fit: cover;
+}
 /* Panel CountryDetail, datos CountryInfo y tarjeta WeatherCard. */
-.detail { position: sticky; top: 1rem; background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 2px 12px #0002; }
-.close { float: right; border: 0; background: none; cursor: pointer; font-size: 1.1rem; }
-.info img { width: 100%; max-height: 180px; object-fit: contain; }
-.weather { margin-top: 1rem; background: #eaf2ff; border-radius: 10px; padding: 1rem; }
-.weather__main { display: flex; align-items: center; gap: .5rem; font-size: 2rem; }
-.weather ul { list-style: none; padding: 0; margin: 0; }
-.cap { text-transform: capitalize; }
-.status { padding: 1rem; text-align: center; }
-.error { background: #fdecea; color: #b3261e; border-radius: 8px; }
-.retry { margin-left: .75rem; padding: .35rem .7rem; border: 1px solid currentColor; border-radius: 6px; color: inherit; background: #fff; cursor: pointer; }
+.detail {
+  position: sticky;
+  top: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 12px #0002;
+}
+.close {
+  float: right;
+  border: 0;
+  background: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.info img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+}
+.weather {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #eaf2ff;
+}
+.weather__main {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 2rem;
+}
+.weather ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cap {
+  text-transform: capitalize;
+}
+.status {
+  padding: 1rem;
+  text-align: center;
+}
+.error {
+  border-radius: 8px;
+  background: #fdecea;
+  color: #b3261e;
+}
+.retry {
+  margin-left: .75rem;
+  padding: .35rem .7rem;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  background: #fff;
+  color: inherit;
+  cursor: pointer;
+}
 /* Spinner de Loader.jsx. */
-.spinner { display: inline-block; width: 1em; height: 1em; border: 3px solid #c8d0dc; border-top-color: #2f6fed;
-  border-radius: 50%; animation: spin 1s linear infinite; vertical-align: middle; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 3px solid #c8d0dc;
+  border-top-color: #2f6fed;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* En pantallas estrechas el detalle pasa arriba de la lista y ocupa todo el ancho. */
-@media (max-width: 800px) { main.with-detail { grid-template-columns: 1fr; } .detail { position: static; order: -1; } }
+@media (max-width: 800px) {
+  main.with-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .detail {
+    position: static;
+    order: -1;
+  }
+}

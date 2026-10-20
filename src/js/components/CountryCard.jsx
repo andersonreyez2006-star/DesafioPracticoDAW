@@ -7,7 +7,11 @@ export default function CountryCard({ country, selected, onSelect }) {
       onClick={() => onSelect(cca3)}
       aria-pressed={selected}
     >
-      <img src={flagUrl} alt={flagAlt || `Bandera de ${name.common}`} loading="lazy" />
+      <img
+        src={flagUrl}
+        alt={flagAlt || `Bandera de ${name.common}`}
+        loading="lazy"
+      />
       <span>{name.common}</span>
     </button>
   );

@@ -9,7 +9,12 @@ import ErrorMessage from "./components/ErrorMessage.jsx";
 
 export default function App() {
   // Al montar la página pide el catálogo. `useFetch` administra carga, error y cancelación.
-  const { data: countries, loading, error, refetch } = useFetch(fetchCountries, []);
+  const {
+    data: countries,
+    loading,
+    error,
+    refetch,
+  } = useFetch(fetchCountries, []);
 
   // Estado local de la pantalla: texto escrito en el buscador y código del país seleccionado.
   const [query, setQuery] = useState("");
@@ -18,7 +23,9 @@ export default function App() {
   // Deriva la lista visible del catálogo sin volver a pedir datos al servidor por cada tecla.
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return (countries ?? []).filter((c) => c.name.common.toLowerCase().includes(q));
+    return (countries ?? []).filter((country) =>
+      country.name.common.toLowerCase().includes(q),
+    );
   }, [countries, query]);
 
   // Se busca en el catálogo completo para que el detalle no desaparezca al filtrar la lista.
@@ -37,9 +44,20 @@ export default function App() {
           {loading && <Loader message="Cargando países..." />}
           {error && <ErrorMessage message={error} onRetry={refetch} />}
           {/* La lista solo se monta después de tener datos. El clic cambia `selected`. */}
-          {countries && <CountryList countries={filtered} selectedCode={selected} onSelect={setSelected} />}
+          {countries && (
+            <CountryList
+              countries={filtered}
+              selectedCode={selected}
+              onSelect={setSelected}
+            />
+          )}
         </div>
-        {selectedCountry && <CountryDetail country={selectedCountry} onClose={() => setSelected(null)} />}
+        {selectedCountry && (
+          <CountryDetail
+            country={selectedCountry}
+            onClose={() => setSelected(null)}
+          />
+        )}
       </main>
     </div>
   );

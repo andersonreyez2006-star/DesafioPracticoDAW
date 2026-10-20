@@ -9,29 +9,53 @@ import { useCallback, useEffect, useState } from "react";
  */
 export function useFetch(fetcher, deps = []) {
   // `state` es el estado de red que consumen App y CountryWeather.
-  const [state, setState] = useState({ data: null, loading: !!fetcher, error: null });
+  const [state, setState] = useState({
+    data: null,
+    loading: !!fetcher,
+    error: null,
+  });
   // Incrementar attempt vuelve a ejecutar el efecto y, por tanto, hace un reintento real.
   const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     if (!fetcher) {
-      setState({ data: null, loading: false, error: null });
+      setState({
+        data: null,
+        loading: false,
+        error: null,
+      });
       return;
     }
     const controller = new AbortController();
-    setState({ data: null, loading: true, error: null });
+    setState({
+      data: null,
+      loading: true,
+      error: null,
+    });
     // `fetcher` es fetchCountries o fetchWeather; recibe signal para poder cancelarse.
     fetcher(controller.signal)
-      .then((data) => setState({ data, loading: false, error: null }))
-      .catch((e) => {
-        if (e.name === "AbortError") return;
-        setState({ data: null, loading: false, error: e.message || "Error desconocido." });
+      .then((data) => {
+        setState({
+          data,
+          loading: false,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        if (error.name === "AbortError") return;
+        setState({
+          data: null,
+          loading: false,
+          error: error.message || "Error desconocido.",
+        });
       });
     return () => controller.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps, attempt]);
 
   // El botón Reintentar llama esta función para disparar otra ejecución del efecto.
-  const refetch = useCallback(() => setAttempt((count) => count + 1), []);
+  const refetch = useCallback(() => {
+    setAttempt((count) => count + 1);
+  }, []);
   return { ...state, refetch };
 }

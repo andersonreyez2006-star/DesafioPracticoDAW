@@ -6,7 +6,7 @@ export default function SearchBar({ value, onChange }) {
       type="search"
       placeholder="Buscar país..."
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(event) => onChange(event.target.value)}
       aria-label="Buscar país"
     />
   );

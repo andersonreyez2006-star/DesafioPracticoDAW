@@ -6,7 +6,12 @@ export default function CountryList({ countries, selectedCode, onSelect }) {
   return (
     <div className="grid">
       {countries.map((c) => (
-        <CountryCard key={c.cca3} country={c} selected={c.cca3 === selectedCode} onSelect={onSelect} />
+        <CountryCard
+          key={c.cca3}
+          country={c}
+          selected={c.cca3 === selectedCode}
+          onSelect={onSelect}
+        />
       ))}
     </div>
   );

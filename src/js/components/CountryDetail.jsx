@@ -5,9 +5,19 @@ import CountryWeather from "./CountryWeather.jsx";
 export default function CountryDetail({ country, onClose }) {
   return (
     <aside className="detail">
-      <button className="close" onClick={onClose} aria-label="Cerrar detalle">✕</button>
+      <button
+        className="close"
+        onClick={onClose}
+        aria-label="Cerrar detalle"
+      >
+        ✕
+      </button>
       <CountryInfo country={country} />
-      <CountryWeather capital={country.capital} countryCode={country.cca2} latlng={country.latlng} />
+      <CountryWeather
+        capital={country.capital}
+        countryCode={country.cca2}
+        latlng={country.latlng}
+      />
     </aside>
   );
 }

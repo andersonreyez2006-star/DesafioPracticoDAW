@@ -32,20 +32,50 @@ CREATE TABLE consultas_clima (
 );
 
 INSERT INTO paises (cca3, cca2, nombre, capital, region, poblacion, bandera_url) VALUES
-('SLV','SV','El Salvador','San Salvador','Americas',6364943,'https://flagcdn.com/w320/sv.png'),
-('MEX','MX','México','Ciudad de México','Americas',128932753,'https://flagcdn.com/w320/mx.png'),
-('GTM','GT','Guatemala','Ciudad de Guatemala','Americas',17843908,'https://flagcdn.com/w320/gt.png'),
-('HND','HN','Honduras','Tegucigalpa','Americas',9904608,'https://flagcdn.com/w320/hn.png'),
-('COL','CO','Colombia','Bogotá','Americas',50882884,'https://flagcdn.com/w320/co.png'),
-('ARG','AR','Argentina','Buenos Aires','Americas',45376763,'https://flagcdn.com/w320/ar.png'),
-('ESP','ES','España','Madrid','Europe',47351567,'https://flagcdn.com/w320/es.png'),
-('FRA','FR','Francia','París','Europe',67391582,'https://flagcdn.com/w320/fr.png'),
-('JPN','JP','Japón','Tokio','Asia',125836021,'https://flagcdn.com/w320/jp.png'),
-('USA','US','Estados Unidos','Washington, D.C.','Americas',329484123,'https://flagcdn.com/w320/us.png');
+  (
+    'SLV', 'SV', 'El Salvador', 'San Salvador', 'Americas', 6364943,
+    'https://flagcdn.com/w320/sv.png'
+  ),
+  (
+    'MEX', 'MX', 'México', 'Ciudad de México', 'Americas', 128932753,
+    'https://flagcdn.com/w320/mx.png'
+  ),
+  (
+    'GTM', 'GT', 'Guatemala', 'Ciudad de Guatemala', 'Americas', 17843908,
+    'https://flagcdn.com/w320/gt.png'
+  ),
+  (
+    'HND', 'HN', 'Honduras', 'Tegucigalpa', 'Americas', 9904608,
+    'https://flagcdn.com/w320/hn.png'
+  ),
+  (
+    'COL', 'CO', 'Colombia', 'Bogotá', 'Americas', 50882884,
+    'https://flagcdn.com/w320/co.png'
+  ),
+  (
+    'ARG', 'AR', 'Argentina', 'Buenos Aires', 'Americas', 45376763,
+    'https://flagcdn.com/w320/ar.png'
+  ),
+  (
+    'ESP', 'ES', 'España', 'Madrid', 'Europe', 47351567,
+    'https://flagcdn.com/w320/es.png'
+  ),
+  (
+    'FRA', 'FR', 'Francia', 'París', 'Europe', 67391582,
+    'https://flagcdn.com/w320/fr.png'
+  ),
+  (
+    'JPN', 'JP', 'Japón', 'Tokio', 'Asia', 125836021,
+    'https://flagcdn.com/w320/jp.png'
+  ),
+  (
+    'USA', 'US', 'Estados Unidos', 'Washington, D.C.', 'Americas', 329484123,
+    'https://flagcdn.com/w320/us.png'
+  );
 
 INSERT INTO consultas_clima (cca3, temperatura, estado, humedad, viento_ms) VALUES
-('SLV', 27.50, 'nubes dispersas', 70, 3.10),
-('ESP', 18.20, 'cielo claro', 55, 2.40);
+  ('SLV', 27.50, 'nubes dispersas', 70, 3.10),
+  ('ESP', 18.20, 'cielo claro', 55, 2.40);
 
 -- Consultas de ejemplo
 SELECT nombre, capital FROM paises ORDER BY nombre;

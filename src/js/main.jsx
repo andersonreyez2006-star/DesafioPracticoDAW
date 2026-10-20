@@ -8,4 +8,5 @@ import "../css/App.css";
 // comenzando por <App />. El navegador renderiza el resultado en el DOM visible.
 // En desarrollo Vite lo sirve desde su servidor local; `npm run build` genera
 // los archivos estáticos equivalentes dentro de la carpeta `dist/`.
-createRoot(document.getElementById("root")).render(<App />);
+const rootElement = document.getElementById("root");
+createRoot(rootElement).render(<App />);

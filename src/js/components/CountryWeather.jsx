@@ -8,11 +8,15 @@ import WeatherCard from "./WeatherCard.jsx";
 // sin capital, cargando, error con reintento o tarjeta con datos exitosos.
 export default function CountryWeather({ capital, countryCode, latlng }) {
   const { data, loading, error, refetch } = useFetch(
-    capital || latlng ? (signal) => fetchWeather({ capital, countryCode, latlng }, signal) : null,
-    [capital, countryCode, latlng]
+    capital || latlng
+      ? (signal) => fetchWeather({ capital, countryCode, latlng }, signal)
+      : null,
+    [capital, countryCode, latlng],
   );
 
-  if (!capital) return <p className="status">Este país no tiene capital registrada.</p>;
+  if (!capital) {
+    return <p className="status">Este país no tiene capital registrada.</p>;
+  }
   if (loading) return <Loader message="Consultando el clima..." />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
   return <WeatherCard weather={data} capital={capital} />;
